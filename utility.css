@@ -1,0 +1,61 @@
+.border {
+    border: 2px solid red;
+    margin: 3px;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.glass {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.4),
+            rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass2 {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.7),
+            rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass3 {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.rounded {
+    border-radius: 7px;
+}
+
+.m1 {
+    margin: 5px;
+}
+
+.p1 {
+    padding: 10px;
+}
