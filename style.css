@@ -2,10 +2,14 @@
     font-family: rhythmix;
     src: url(Assets/Fonts/avatarock.ttf);
 }
-
+html{
+    height: 100vh;
+    width: 100vw;   
+}
 * {
     margin: 0;
     padding: 0;
+    
 }
 
 body {
@@ -101,8 +105,11 @@ body::after {
 .right {
     width: 80vw;
     max-height: 95vh;
-
-
+    margin-top: 10px;
+    position: relative;
+    padding-top:10px;
+    padding-bottom:10px;
+   
 }
 
 .header {
@@ -216,4 +223,31 @@ body::after {
 .card p {
     font-size: 22px;
     padding: 5px;
+}
+.playbar-container{
+   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    width: 91%;
+  bottom: 0;
+   
+   padding-top: 12px;
+   margin-bottom: 10px;
+}
+.playbar{
+   margin-left: 60px;
+    width: 100%;
+    min-height: 65px;
+    height: 100%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.song-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
