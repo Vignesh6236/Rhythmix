@@ -10,50 +10,61 @@ let getSongs = async () => {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.title.endsWith(".mp3")) {
-            songs.push(element.title.split(".mp3")[0]);
+            
+            let decodedTitle = decodeURIComponent(element.title);
+            songs.push(decodedTitle);
         }
     }
-    return songs    
+    return songs;
 }
+
+let currentSong = new Audio();
+
+const playMusic = (track) => {
+    // let audio = new Audio(track);
+    currentSong.src = track;
+    currentSong.volume = 0.2;
+    currentSong.play();
+};
+
 
 
 main = async () => {
-    // get list of all songs
-    let songs = await getSongs()
-    console.log(songs);
+    
 
-    let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0]
+    // Get list of all songs
+    let songs = await getSongs();
+
+    // Show all songs
+    let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0];
     for (const song of songs) {
-        songUL.innerHTML = songUL.innerHTML + `
+        let songInfo = song.split(".mp3")[0];
+        let songArtist = songInfo.split("-")[0].trim();
+        let songName = songInfo.split("-")[1].trim();
+        songUL.innerHTML += `
         <li class="glass4 rounded">
             <img src="assets/Icons/music.svg" alt="music">
             <div class="info">
-                <div>${song}</div>
-                <div>Song artist</div>
+                <div>${songName}</div>
+                <div>${songArtist}</div>
             </div>
             <div class="playnow">
                 <span>Play Now</span>
                 <img src="assets/Icons/play.svg" alt="play">
             </div>
-        </li>
-        `;
+        </li>`;
     }
 
-
-    // play the first songs
-    let audio = new Audio(songs[0]);
-    audio.volume = 0.1;   
-    audio.play();
-
-
-
-    audio.addEventListener("loadeddata", () => {
-    console.log(audio.duration, audio.currentSrc, audio.currentTime);
+    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
+        e.addEventListener("click", () => {
+            let songName = e.querySelector(".info").firstElementChild.innerHTML.trim();
+            let songArtist = e.querySelector(".info").lastElementChild.innerHTML.trim();
+            // Encode the URL for any spaces or special characters
+            let track = `http://127.0.0.1:5500/assets/Songs/${encodeURIComponent(songArtist)}-%20${encodeURIComponent(songName)}.mp3`;
+            playMusic(track);
+        });
     });
-
-}
-
-main()
+};
 
 
-
+main();
