@@ -39,10 +39,13 @@ body::after {
 .left {
     width: 20vw;
     padding: 0 0 0 10px;
+    height: 95vh;
 }
-
+.home{
+    height: 20vh;
+}
 .logo img {
-    width: 35%;
+    width: 150px;
 }
 
 .home ul li {
@@ -73,7 +76,7 @@ body::after {
 }
 
 .library {
-    height: 75vh;
+    max-height: 72vh;
     position: relative;
     overflow: auto;
 }
@@ -165,7 +168,7 @@ body::after {
 
 .right {
     width: 80vw;
-    max-height: 95vh;
+    height: 95vh;
     margin-top: 10px;
     position: relative;
     padding-top: 10px;
@@ -290,7 +293,7 @@ body::after {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70vw;
+    width: 75vw;
     bottom: 0.5%;
 
     padding-top: 12px;
@@ -305,39 +308,39 @@ body::after {
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
-.seekbar{
+
+.seekbar {
     height: 8px;
     width: 98%;
-    background: rgb(252,0,255);
-    background: linear-gradient(90deg, rgba(252,0,255,0.5) 0%, rgba(0,219,222,0.5) 100%);
-
+    background: rgb(252, 0, 255);
+    background: linear-gradient(90deg, rgba(252, 0, 255, 0.5) 0%, rgba(0, 219, 222, 0.5) 100%);
+    cursor: pointer;
     position: absolute;
     bottom: 10px;
 }
-.circle{
+
+.circle {
     height: 25px;
     width: 25px;
     border-radius: 50%;
-    
+
     position: absolute;
     bottom: -9px;
-    left: 100%;
-    transition: left 1s;
-   
+    left: 0%;
+    transition: 0.01s ease-in-out;
+
 }
-.circle:hover{
-    cursor: pointer;
-    transition: 0.3d;
-}
+
+
 .song-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     bottom: 10px;
-    gap: 40px;
+    gap: 60px;
 }
 
 .song-buttons img {
@@ -349,4 +352,17 @@ body::after {
     cursor: pointer;
     transform: scale(1.5);
     transform: 0.3s;
+}
+.song-info{
+    font-size: 35px;
+    position: absolute;
+    bottom: 45%;
+    left: 20px;
+}
+.song-duration{
+    font-size: 30px;
+    position: absolute;
+    bottom: 45%;
+    right: 20px;
+
 }
