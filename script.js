@@ -109,17 +109,31 @@ main = async () => {
         }
     });
 
-     // event listener to update time and duration of the songs and also update the circle of the seekbar
+    // event listener to update time and duration of the songs and also update the circle of the seekbar
     currentSong.addEventListener("timeupdate", () => {
         document.querySelector(".song-duration").innerHTML = `${convertSecondsToHMS(currentSong.currentTime)} / ${convertSecondsToHMS(currentSong.duration)}`;
         document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
     });
 
     // event listener to control the seekbar
-    document.querySelector(".seekbar").addEventListener("click", e=>{
-        let percent = (e.offsetX / e.target.getBoundingClientRect().width )* 100;
+    document.querySelector(".seekbar").addEventListener("click", e => {
+        let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
         document.querySelector(".circle").style.left = percent + "%";
         currentSong.currentTime = ((currentSong.duration) * percent) / 100;
+    })
+
+
+    // adding event listener to hamburger to open side bar
+    document.querySelector(".hamburger").addEventListener("click",()=>{
+        document.querySelector(".left").style.left = 0;
+        document.querySelector(".close").style.display = "inline";
+    })
+
+
+    // adding event listener to close button to close sidebar
+    document.querySelector(".close").addEventListener("click",()=>{
+        document.querySelector(".left").style.left = "-100%";
+        document.querySelector(".close").style.display = "none"
     })
 };
 
