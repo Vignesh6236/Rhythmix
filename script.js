@@ -1,3 +1,7 @@
+
+let currentSong = new Audio();
+let songs;
+
 // get all songs
 let getSongs = async () => {
     let a = await fetch("http://127.0.0.1:5500/assets/Songs/");
@@ -17,12 +21,11 @@ let getSongs = async () => {
     return songs;
 };
 
-let currentSong = new Audio();
 
 // function to play music
 const playMusic = (track, songName, autoPlay = true) => {
     currentSong.src = track;
-    currentSong.volume = 0.2;
+
     document.querySelector(".song-info").innerHTML = `${songName}`;
     document.querySelector(".song-duration").innerHTML = "00:00 / 00:00";
 
@@ -42,6 +45,9 @@ const playMusic = (track, songName, autoPlay = true) => {
 
 // function to convert time to proper format
 function convertSecondsToHMS(seconds) {
+    if (isNaN(seconds) || seconds < 0) {
+        return "00:00"
+    }
     let hrs = Math.floor(seconds / 3600);
     let mins = Math.floor((seconds % 3600) / 60);
     let secs = Math.floor(seconds % 60);
@@ -55,7 +61,7 @@ function convertSecondsToHMS(seconds) {
 
 //main function
 main = async () => {
-    let songs = await getSongs();
+    songs = await getSongs();
 
     //inserting elements into the web page
     let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0];
@@ -123,18 +129,87 @@ main = async () => {
     })
 
 
-    // adding event listener to hamburger to open side bar
-    document.querySelector(".hamburger").addEventListener("click",()=>{
+    // event listener to hamburger to open side bar
+    document.querySelector(".hamburger").addEventListener("click", () => {
         document.querySelector(".left").style.left = 0;
         document.querySelector(".close").style.display = "inline";
     })
 
 
-    // adding event listener to close button to close sidebar
-    document.querySelector(".close").addEventListener("click",()=>{
+    // event listener to close button to close sidebar
+    document.querySelector(".close").addEventListener("click", () => {
         document.querySelector(".left").style.left = "-100%";
         document.querySelector(".close").style.display = "none"
     })
+
+    // event listener for previous button
+    previous.addEventListener("click", () => {
+        let currentSongTitle = decodeURIComponent(currentSong.src.split("/").slice(-1)[0]);
+        let currentIndex = songs.indexOf(currentSongTitle);
+
+        if (currentIndex > 0) {
+            let previousSong = songs[currentIndex - 1];
+            let previousSongInfo = previousSong.split(".mp3")[0];
+            let previousSongArtist = previousSongInfo.split("-")[0].trim();
+            let previousSongName = previousSongInfo.split("-")[1].trim();
+            let previousTrack = `http://127.0.0.1:5500/assets/Songs/${encodeURIComponent(previousSongArtist)}-%20${encodeURIComponent(previousSongName)}.mp3`;
+
+            playMusic(previousTrack, previousSongName);
+            console.log(`Playing previous song`);
+
+        } else {
+            console.log("No previous song available.");
+        }
+    });
+
+
+    // event listener for next button
+    next.addEventListener("click", () => {
+        let currentSongTitle = decodeURIComponent(currentSong.src.split("/").slice(-1)[0]);
+        let currentIndex = songs.indexOf(currentSongTitle);
+
+        if (currentIndex < songs.length - 1) {
+            let nextSong = songs[currentIndex + 1];
+            let nextSongInfo = nextSong.split(".mp3")[0];
+            let nextSongArtist = nextSongInfo.split("-")[0].trim();
+            let nextSongName = nextSongInfo.split("-")[1].trim();
+            let nextTrack = `http://127.0.0.1:5500/assets/Songs/${encodeURIComponent(nextSongArtist)}-%20${encodeURIComponent(nextSongName)}.mp3`;
+
+            playMusic(nextTrack, nextSongName);
+            console.log(`Playing next song!`);
+
+        } else {
+            console.log("No next song available.");
+        }
+    });
+
+
+    // event listener to toggle volume slider visibility
+    const volumeButton = document.querySelector('.volume-container img');
+    const volumeSlider = document.querySelector('.volume-container input');
+    volumeButton.addEventListener('click', () => {
+        if (volumeSlider.style.display === 'block') {
+            volumeSlider.style.display = 'none';
+        } else {
+            volumeSlider.style.display = 'block';
+        }
+    });
+
+    // event listener to close the volume slider if clicked outside the slider
+    document.addEventListener('click', (event) => {
+        if (!volumeButton.contains(event.target) && !volumeSlider.contains(event.target)) {
+            volumeSlider.style.display = 'none';
+        }
+    });
+
+
+    // event listener to set volume
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
+        console.log(`Setting volume to ${e.target.value}/100`);
+        currentSong.volume = parseInt(e.target.value) / 100
+
+    })
+
 };
 
 main();

@@ -186,7 +186,8 @@ body::after {
 .header>* {
     padding: 15px;
 }
-.close{
+
+.close {
     padding: 0 10px;
     display: none;
     position: absolute;
@@ -195,19 +196,23 @@ body::after {
     padding: 15px;
     cursor: pointer;
 }
-.close:hover{
+
+.close:hover {
     transform: scale(1.4);
     transition: 0.3s;
 }
-.hamburger{
+
+.hamburger {
     padding: 0 10px;
     display: none;
     cursor: pointer;
 }
-.hamburger:hover{
+
+.hamburger:hover {
     transform: scale(1.4);
     transition: 0.3s;
 }
+
 .nav img {
     transition: 0.3s;
     transform: scale(1.2);
@@ -242,7 +247,7 @@ body::after {
 .playlists {
 
     padding: 16px;
-   
+
 }
 
 .playlists span {
@@ -264,7 +269,7 @@ body::after {
     max-height: 65vh;
     margin-top: 25px;
     margin-right: 0;
-    
+
     gap: 10px;
     padding-bottom: 10px;
 }
@@ -318,13 +323,13 @@ body::after {
     align-items: center;
     width: 100%;
     bottom: 0.5%;
-    
+
     padding-top: 12px;
     margin-bottom: 10px;
 }
 
 .playbar {
-    
+
     width: 100%;
     min-height: 85px;
     height: 100%;
@@ -332,7 +337,7 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    
+
 }
 
 .seekbar {
@@ -389,96 +394,196 @@ body::after {
     font-size: 30px;
     position: absolute;
     bottom: 45%;
-    right: 20px;
+    right: 12%;
 
 }
 
-@media only screen and (max-width: 1500px) {
-   .left{
+.volume-container {
     position: absolute;
-    left: -100%;
-    transition: all 0.3s ease-in-out;
-    z-index: 1;
-    width: 300px;
-    
-   }
-   .right{
-    width: 100vw;
-   }
-  
-   .hamburger{
-    display: inline;
-   }
-   .playbar-container{
-    width: 100%;
-    
-   }
-   .playbar{
-    margin: 0px 5%;
-    
-   }
-   .song-buttons {
-    gap: 5vw;
+    right: 3%;
+    bottom: 45%;
 }
 
-  }
-  @media only screen and (max-height: 900px) and (orientation: portrait) {
-    
-   
-    .card-container{
+.volume-container img {
+    transform: scale(1.3);
+    transition: 0.3s;
+
+}
+
+.volume-container img:hover {
+    transform: scale(1.5);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.volume-container input {
+    position: absolute;
+    bottom: 130%;
+    display: none;
+}
+
+.volume-container.show input {
+    display: block;
+}
+
+.range {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: 1600px) {
+    .left {
+        position: absolute;
+        left: -100%;
+        transition: all 0.3s ease-in-out;
+        z-index: 1;
+        width: 300px;
+
+    }
+
+    .right {
+        width: 100vw;
+    }
+
+    .hamburger {
+        display: inline;
+    }
+
+    .playbar-container {
+        width: 100%;
+
+    }
+
+    .playbar {
+        margin: 0px 5%;
+
+    }
+
+    .song-buttons {
+        gap: 5vw;
+    }
+
+}
+
+@media only screen and (max-height: 950px) and (orientation: portrait) {
+
+
+    .card-container {
         height: 65vh;
     }
-    .song-info{
-        font-size: 25px;
+
+    .song-info {
+        font-size: 20px;
     }
-    .song-buttons{
+
+    .song-buttons {
         gap: 5px;
         bottom: 7px;
     }
-    .song-buttons img{
+
+    .song-buttons img {
         transform: scale(0.8);
     }
-    .song-buttons img:hover{
+
+    .song-duration {
+        font-size: 20px;
+    }
+
+    .volume-container {
+        bottom: 40%;
+
+    }
+
+    .volume-container img {
+        transform: scale(0.8);
+    }
+
+    .home ul li img:hover {
+        transform: scale(1.2);
+    }
+
+    .heading img:hover {
+        transform: scale(1.2);
+
+    }
+
+    .song-buttons img:hover {
         transform: scale(1);
     }
-    .song-duration{
-        font-size: 25px;
+
+    .volume-container img:hover {
+        transform: scale(1);
+
     }
-  }
-  @media only screen and (max-height: 800px) {
-   
-    .logo img{
+}
+
+@media only screen and (max-height: 800px) and (orientation: portrait) {
+
+    .logo img {
         width: 100px;
     }
-    .library{
+
+    .library {
         height: 70vh;
     }
+
     .home ul li {
         font-size: 25px
     }
-    .home ul li img{
+
+    .home ul li img {
         transform: scale(0.8);
     }
-    .heading{
+
+    .home ul li img:hover {
+        transform: scale(1);
+    }
+
+    .heading img {
+        transform: scale(0.8);
+
+    }
+
+    .heading img:hover {
+        transform: scale(1);
+
+    }
+
+    .heading {
         font-size: 25px;
     }
-    .songList .info{
+
+    .songList .info {
         font-size: 18px;
     }
-    .buttons button{
+
+    .buttons button {
         font-size: 18px;
     }
-    .card-container{
+
+    .card-container {
         height: 60vh;
     }
-    .playlists span{
+
+    .playlists span {
         font-size: 25px;
-        
+
     }
-    .song-info{
+
+    .song-info {
         font-size: 20px;
     }
-    .song-duration{
+
+    .song-duration {
         font-size: 20px;
     }
-  }
+
+    .song-buttons img:hover {
+        transform: scale(1);
+    }
+
+    .volume-container img:hover {
+        transform: scale(1);
+
+    }
+}
