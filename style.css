@@ -6,6 +6,9 @@
 html {
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 * {
@@ -22,7 +25,7 @@ body {
     background-repeat: no-repeat;
     font-family: rhythmix;
     height: 100vh;
-
+    overflow: hidden;
 }
 
 body::after {
@@ -78,7 +81,8 @@ body::after {
 }
 
 .library {
-    max-height: 72vh;
+
+    height: 72vh;
     position: relative;
     overflow: auto;
 }
@@ -259,7 +263,7 @@ body::after {
     cursor: pointer;
 }
 
-.card-container {
+.cardContainer {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -468,12 +472,16 @@ body::after {
 @media only screen and (max-height: 950px) and (orientation: portrait) {
 
 
-    .card-container {
+    .cardContainer {
         height: 65vh;
     }
 
     .song-info {
         font-size: 20px;
+    }
+
+    .playbar-container {
+        position: relative;
     }
 
     .song-buttons {
@@ -561,7 +569,7 @@ body::after {
         font-size: 18px;
     }
 
-    .card-container {
+    .cardContainer {
         height: 60vh;
     }
 
