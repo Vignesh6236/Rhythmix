@@ -104,3 +104,70 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.5);
 }
+
+
+
+.custom-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 150px;
+    background: transparent;
+}
+
+.custom-range::-webkit-slider-runnable-track {
+    width: 12px;
+    height: 100%;
+    background: #fc00ff;
+    background: -webkit-linear-gradient(to top, #00dbde, #fc00ff);
+    background: linear-gradient(to top, #00dbde, #fc00ff);
+    border-radius: 12px;
+
+}
+
+.custom-range::-moz-range-track {
+    width: 15px;
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+}
+
+.custom-range::-ms-track {
+    width: 12px;
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+    border: none;
+    color: transparent;
+}
+
+.custom-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    margin-top: -6px;
+
+}
+
+.custom-range::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(to top, #00dbde, #fc00ff);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.custom-range::-ms-thumb {
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(to top, #00dbde, #fc00ff);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}

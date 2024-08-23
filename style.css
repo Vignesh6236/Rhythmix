@@ -309,10 +309,10 @@ body::after {
     transition: all 0.3s ease-out;
 }
 
-.card img {
+.card img:nth-child(2) {
     width: 100%;
-    object-fit: contain;
-
+    height: 200px;
+    object-fit: cover
 }
 
 .card p {
@@ -362,7 +362,7 @@ body::after {
     position: absolute;
     bottom: -9px;
     left: 0%;
-    transition: 0.01s ease-in-out;
+    transition: 0.3s ease-out;
 
 }
 
@@ -432,7 +432,12 @@ body::after {
 
 .range {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+}
+
+.range input:hover {
+    cursor: pointer;
+
 }
 
 @media only screen and (max-width: 1600px) {
@@ -499,7 +504,6 @@ body::after {
 
     .volume-container {
         bottom: 40%;
-
     }
 
     .volume-container img {
@@ -578,12 +582,21 @@ body::after {
 
     }
 
+    .song-buttons {
+        gap: 5px;
+        bottom: 6px;
+    }
+
+    .volume-container {
+        bottom: 38%;
+    }
+
     .song-info {
         font-size: 20px;
     }
 
     .song-duration {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .song-buttons img:hover {

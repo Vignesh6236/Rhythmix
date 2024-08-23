@@ -110,6 +110,8 @@ async function displayPlaylists() {
     for (let index = 0; index < array.length; index++) {
         const e = array[index];
         if (e.href.includes("/playlists/")) {
+
+
             // extraction of folder name
             let hrefParts = e.href.split("/").filter(part => part);
             let folder = hrefParts[hrefParts.length - 1].replace(/\/$/, '');
@@ -143,9 +145,6 @@ async function displayPlaylists() {
 };
 
 
-
-
-
 // Main function
 const main = async () => {
 
@@ -164,7 +163,7 @@ const main = async () => {
         }
     });
 
-    // Event listener to play/pause button
+    // Event listener to play/pause
     play.addEventListener("click", () => {
         if (currentSong.paused) {
             currentSong.play();
@@ -284,9 +283,16 @@ const main = async () => {
 
     // Event listener to set volume
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
-        console.log(`Setting volume to ${e.target.value}/100`);
-        currentSong.volume = parseInt(e.target.value) / 100;
+        let volumeValue = parseInt(e.target.value);
+        currentSong.volume = volumeValue / 100;
+        if (volumeValue === 0) {
+            volumeButton.src = "assets/icons/mute.svg";
+        } else {
+            volumeButton.src = "assets/icons/volume.svg";
+        }
+        console.log(`Setting volume to ${volumeValue}/100`);
     });
+
 };
 
 main();
